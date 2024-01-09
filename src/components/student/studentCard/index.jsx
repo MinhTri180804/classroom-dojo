@@ -18,8 +18,8 @@ export default function StudentCard({
       <div
         onClick={handleModelProfile}
         className={`w-full h-[250px] rounded-xl ${
-          checkFail ? "bg-red-200" : ""
-        } bg-white shadow-xl hover:shadow-sm cursor-pointer flex justify-center items-center gap-2 flex-col`}
+          checkFail ? "bg-red-200" : "bg-white"
+        } shadow-xl hover:shadow-sm cursor-pointer flex justify-center items-center gap-2 flex-col`}
       >
         <img
           src={studentAvatar}
@@ -34,7 +34,10 @@ export default function StudentCard({
 
       {modelProfile ? (
         <OverlayComponent>
-          <ProfileStudent handleModelProfile={handleModelProfile} studentId={studentId}/>
+          <ProfileStudent
+            handleModelProfile={handleModelProfile}
+            studentId={studentId}
+          />
         </OverlayComponent>
       ) : (
         ""

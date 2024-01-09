@@ -36,13 +36,13 @@ export default function NavBarAccount() {
         <IconDown />
 
         <div
-          className={`absolute translate-y-2 right-0 top-full w-[150px] border-[1px] border-gray-100 shadow-xl rounded-lg overflow-hidden ${
+          className={`absolute translate-y-2  right-0 top-full w-[150px] border-[1px] border-gray-100 shadow-xl rounded-lg overflow-hidden ${
             openMenuChildren ? "block" : "hidden"
           }`}
         >
           <div
             onClick={handleModelProfile}
-            className="w-full py-3 text-sm border-b-[1px] border-gray-300 text-center hover:bg-blue-200 duration-150 ease-linear"
+            className="w-full py-3  text-sm border-b-[1px] border-gray-300 text-center hover:bg-blue-200 duration-150 ease-linear"
           >
             Profile Setting
           </div>
