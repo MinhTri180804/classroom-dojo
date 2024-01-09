@@ -36,6 +36,15 @@ const classesApi = {
       },
     });
   },
+
+  modifiedStatusClass: (id, data) => {
+    const url = `/teachers/classes/${id}/status`;
+    return axiosClient.post(url, data, {
+      headers: {
+        "Access-token": localStorage.getItem("accessToken") || null,
+      },
+    });
+  },
 };
 
 export default classesApi;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import logo from "../../../assets/logo.jpg";
-import ModelJoinClass from "../../model/modelJoinClass";
-import OverlayComponent from "../../overlay";
+import ModelJoinClass from "../../../components/model/modelJoinClass";
+import OverlayComponent from "../../../components/overlay";
 
 export default function ClassEmpty() {
   const [modelJoin, setModelJoin] = useState(false);

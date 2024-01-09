@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IconPlus } from "../../icon";
-import ModelJoinClass from "../../../model/modelJoinClass";
-import OverlayComponent from "../../../overlay";
+import ModelJoinClass from "../../../../components/model/modelJoinClass";
+import OverlayComponent from "../../../../components/overlay";
 
 export default function ClassCardJoin() {
   const [isShowModal, setIsShowModal] = useState(false);

@@ -1,24 +1,33 @@
 import { useSelector } from "react-redux";
 import StudentVertical from "../../components/student/studentVertical";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import attendanceApi from "../../apis/attendanceApi";
 
 export default function AttendancePage() {
   const { id } = useParams();
   const students = useSelector((state) => state.studentsSlice.students);
+  const sessionClass = useSelector((state) => state.studentsSlice.countSession);
   const [attendance, setAttendance] = useState([]);
+  const navigation = useNavigate();
 
-  const handleSubmitAttendance = (data) => {
+  const handleSubmitAttendance = async (data) => {
     if (attendance.length === 0) {
       toast.error("Please select student to submit attendance");
     } else {
       const dataRequest = {
         classId: id,
-        students: attendance,
+        presentStudentIds: attendance,
       };
 
-      console.log(dataRequest);
+      try {
+        const res = await attendanceApi.attendanceClass(dataRequest);
+        toast.success("Submit attendance success");
+        navigation(`/launchpad/classes/${id}`);
+      } catch (error) {
+        toast.error("Submit attendance failed");
+      }
     }
   };
 
@@ -39,6 +48,7 @@ export default function AttendancePage() {
               <StudentVertical
                 key={index}
                 student={student}
+                sessionClass={sessionClass}
                 onAttendance={(isPresent) =>
                   handleAttendance(student.studentId, isPresent)
                 }

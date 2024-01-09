@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import NavBarComponent from "../../components/navbar";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Suspense, useEffect, useState } from "react";
 import { getStudentInClass } from "../../store/redux/features/studentsSlice";
 import StudentCard from "../../components/student/studentCard";
@@ -16,12 +16,21 @@ export default function ClassRoom() {
   const dispatch = useDispatch();
   const students = useSelector((state) => state.studentsSlice.students);
   const statusStudents = useSelector((state) => state.studentsSlice.status);
+  const sessionClass = useSelector((state) => state.studentsSlice.countSession);
+  const authentication = useSelector(
+    (state) => state.AuthSlice.isAuthenticated
+  );
+  const navigation = useNavigate();
   const { id } = useParams();
   const classItem = useSelector((state) =>
     state.ClassSlice.classes.filter((classItem) => {
       return classItem.classId == parseInt(id);
     })
   );
+
+  if (!authentication) {
+    navigation("/");
+  }else {}
 
   useEffect(() => {
     dispatch(getStudentInClass(id));
@@ -30,16 +39,27 @@ export default function ClassRoom() {
   const nameClass = classItem[0].title;
   const codeClass = classItem[0].code;
 
-  console.log(codeClass);
-
   return (
     <>
       <div className="min-h-[100vh] w-full overflow-hidden">
         <NavBarComponent titleNavbar={nameClass} codeJoin={codeClass} />
 
         <section className="w-full h-full px-5 py-6">
-          <div className="title font-bold text-xl text-[#8689b8]">
-            Student in class
+          <div className="flex justify-between items-center">
+            <div className="title font-bold text-xl text-[#8689b8]">
+              Student in class
+            </div>
+
+            <div className="text-xl">
+              {sessionClass == 0 ? (
+                <div className="text-red-500">First Lesson</div>
+              ) : (
+                <div>
+                  Lesson :{" "}
+                  <span className="text-green-500">{sessionClass}</span>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="grid grid-cols-6 gap-6 mt-7">
@@ -47,7 +67,11 @@ export default function ClassRoom() {
               <StudentCardListSkeleton />
             ) : students.length ? (
               students.map((student, index) => (
-                <StudentCard student={student} />
+                <StudentCard
+                  key={index}
+                  student={student}
+                  sessionClass={sessionClass}
+                />
               ))
             ) : (
               <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] text-center">

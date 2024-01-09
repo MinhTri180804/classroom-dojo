@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { IconPlus } from "../../icon";
-import ModelCreateClass from "../../../model/modelCreateClass";
-import OverlayComponent from "../../../overlay";
+import ModelCreateClass from "../../../../components/model/modelCreateClass";
+import OverlayComponent from "../../../../components/overlay";
 
 ClassCardAdd.propTypes = {};
 

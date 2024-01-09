@@ -63,6 +63,20 @@ export const ClassSlice = createSlice({
         state.classes = state.classes.filter(
           (classItem) => classItem.classId !== action.payload
         );
+      })
+      .addCase(deleteClass.rejected, (state, action) => {
+        state.status = "failed";
+        state.errorMessage = action.error.message;
+      })
+      .addCase(modifiedStatusClass.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(modifiedStatusClass.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        const index = state.classes.findIndex(
+          (classItem) => classItem.classId === action.payload
+        );
+        state.classes[index].status = state.classes[index].status === "active" ? "inactive" : "active";
       }),
 });
 
@@ -107,6 +121,18 @@ export const deleteClass = createAsyncThunk(
   async (id) => {
     try {
       const request = await classesApi.deleteClass(id);
+      return id;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
+export const modifiedStatusClass = createAsyncThunk(
+  "classes/modifiedStatusClass",
+  async (id, data) => {
+    try {
+      const request = await classesApi.modifiedStatusClass(id, data);
       return id;
     } catch (error) {
       throw error;

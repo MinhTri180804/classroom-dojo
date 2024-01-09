@@ -26,7 +26,7 @@ function NavBarComponent(props) {
             {props.titleNavbar}
           </h5>
           <div className="font-medium text-xl">
-            [ {props.codeJoin} ]
+            [ <span className="text-green-500">{props.codeJoin}</span> ]
           </div>
         </div>
 

@@ -1,8 +1,6 @@
 import { Outlet } from "react-router-dom";
-import ClassCardAdd from "../components/class/classCard/classCardAdd";
-import NavBarComponent from "../components/navbar";
-import SlideBarComponent from "../components/slideBar";
 import { ToastContainer } from "react-toastify";
+import SlideBarComponent from "../components/slideBar";
 
 export default function LaunchPad() {
   return (

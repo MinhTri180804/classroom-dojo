@@ -2,7 +2,7 @@ import axiosClient from "./axiosClient";
 
 const studentsApi = {
   getStudentInClass: (classId) => {
-    const url = `/teacher/classes/${classId}/students`;
+    const url = `/teachers/classes/${classId}/students`;
     return axiosClient.get(url, {
       headers: {
         "Access-token": localStorage.getItem("accessToken") || null,
@@ -10,17 +10,13 @@ const studentsApi = {
     });
   },
 
-  getStudent: (data, studentId) => {
+  getStudent: (studentId) => {
     const url = `/students/${studentId}`;
-    return axiosClient.get(
-      url,
-      { data },
-      {
-        headers: {
-          "Access-token": localStorage.getItem("accessToken") || null,
-        },
-      }
-    );
+    return axiosClient.get(url, {
+      headers: {
+        "Access-token": localStorage.getItem("accessToken") || null,
+      },
+    });
   },
 };
 

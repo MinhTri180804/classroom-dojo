@@ -2,10 +2,13 @@ import avatarClass from "../../../assets/avatarClass.png";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
-import { IconClose, IconQuestion } from "../../navbar/icon";
+import { IconClose, IconQuestion } from "../../../components/navbar/icon";
 import { useDispatch, useSelector } from "react-redux";
-import OverlayComponent from "../../overlay";
-import { deleteClass } from "../../../store/redux/features/classSlice";
+import OverlayComponent from "../../../components/overlay";
+import {
+  deleteClass,
+  modifiedStatusClass,
+} from "../../../store/redux/features/classSlice";
 import { toast } from "react-toastify";
 
 ClassCard.propTypes = {
@@ -23,6 +26,23 @@ function ClassCard({
 
   const handleProfileClass = () => {
     setProfileClass(!profileClass);
+  };
+
+  const statusModified = status === "active" ? "inactive" : "active";
+
+  const handleModifiedStatus = async () => {
+    const dataRequest = {
+      status: statusModified,
+    };
+
+    const result = await dispatch(modifiedStatusClass(classId, dataRequest));
+    const statusRequest = await result.meta.requestStatus;
+    if (statusRequest === "fulfilled") {
+      handleProfileClass();
+      toast.success(`Modified status class ${title} success`);
+    } else if (statusRequest === "rejected") {
+      toast.error(`Modified status class ${title} failed`);
+    }
   };
 
   const handleDeleteClass = async () => {
@@ -119,7 +139,10 @@ function ClassCard({
                   >
                     Delete
                   </button>
-                  <div className="w-[100px] py-2 bg-red-300 rounded text-white hover:bg-red-500 duration-200 ease-linear">
+                  <div
+                    onClick={() => handleModifiedStatus()}
+                    className="w-[100px] py-2 bg-red-300 rounded text-white hover:bg-red-500 duration-200 ease-linear"
+                  >
                     End of class
                   </div>
                 </>

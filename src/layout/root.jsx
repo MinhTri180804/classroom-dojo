@@ -1,5 +1,3 @@
-import logoStudent from "../assets/role-student.webp"
-import logoTeacher from "../assets/role-teacher.webp"
 import { Outlet } from "react-router-dom";
 import HeaderHomeComponent from "../components/header/headerHome";
 

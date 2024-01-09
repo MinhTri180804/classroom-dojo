@@ -1,14 +1,12 @@
-import logoMock from "../../assets/avatar.png";
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { IconCalender, IconImage, IconMessage, IconPerson } from "./icon";
-import ClassVerticalCreate from "../class/classVertical/classVerticalCreate";
-import ClassVerticalAll from "../class/classVertical/classVerticalAll";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllClasses } from "../../store/redux/features/classSlice";
-import ClassVertical from "../class/classVertical";
+import ClassVertical from "../../components/class/classVertical";
+import ClassVerticalAll from "../../components/class/classVertical/classVerticalAll";
+import ClassVerticalCreate from "../../components/class/classVertical/classVerticalCreate";
+import logoBrand from "../../assets/logo.jpg";
 import { formatRole } from "../../utils/format";
+import { IconCalender, IconImage, IconMessage, IconPerson } from "./icon";
 
 SlideBarComponent.propTypes = {};
 
@@ -24,7 +22,7 @@ function SlideBarComponent(props) {
     <div className="p-3 border-r-2 h-full min-h-screen border-gray-300 bg-white overflow-scroll no-scrollbar">
       <div className="">
         <img
-          src={logoMock}
+          src={logoBrand}
           className="w-[50px] h-[50px] rounded-full object-cover"
           alt=""
         />

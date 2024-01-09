@@ -1,6 +1,6 @@
 import logoTeacher from "../../../assets/role-teacher.webp"
 import logoStudent from "../../../assets/role-student.webp"
-import logoBrand from "../../../assets/avatar.png"
+import logoBrand from "../../../assets/logo.jpg"
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
