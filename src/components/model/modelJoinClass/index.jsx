@@ -22,7 +22,7 @@ export default function ModelJoinClass({ handleModelJoinClass }) {
       const requestStatus = res.meta.requestStatus;
 
       if (requestStatus === "fulfilled") {
-        handleModelCreateClass();
+        handleModelJoinClass();
         toast.success("Join class success");
       } else {
         toast.error("Join class no exits");
