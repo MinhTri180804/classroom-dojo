@@ -124,7 +124,7 @@ function ProfileStudent({ handleModelProfile, studentId }) {
                     />
                     {item.title}
                   </div>
-                  <div className="flex-1 text-left">{item.teacherFullName}</div>
+                  <div className="flex-1 text-left">{item.fullName}</div>
                   <div
                     className={`flex-1 text-center font-bold ${
                       parseFloat(item.attendanceRate * 100).toFixed(1) >= 50
