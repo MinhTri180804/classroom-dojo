@@ -2,7 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 
 const axiosClient = axios.create({
-  baseURL: "http://18.142.251.214:443",
+  baseURL: "https://ec2-18-142-251-214.ap-southeast-1.compute.amazonaws.com:443",
   headers: {
     "Content-Type": "application/json",
   },
