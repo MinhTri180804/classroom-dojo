@@ -12,7 +12,7 @@ export default function ClassCardJoin() {
     <>
       <div
         className="w-full rounded-xl shadow-xl h-[200px] bg-white hover:shadow-sm cursor-pointer duration-150 ease-linear flex justify-center items-center flex-col px-2 text-center"
-        onClick={handleModelCreateClass}
+        onClick={handleModelJoinClass}
       >
         <div className="w-[50px] h-[50px] flex justify-center items-center rounded-full bg-blue-500 text-white">
           <IconPlus />
