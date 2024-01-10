@@ -30,7 +30,7 @@ export default function RegisterPage() {
   return (
     <>
       <ToastContainer />
-      <div className="container mx-auto w-[500px] p-7 border-[1px] border-gray-300 rounded-xl mt-32">
+      <div className="container mx-auto w-[500px] p-7 border-[1px] border-gray-300 rounded-xl mt-32 mb-20">
         <div className="text-blue-600 text-center text-3xl uppercase font-bold mb-6">
           Register {role}
         </div>
