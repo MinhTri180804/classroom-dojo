@@ -18,7 +18,7 @@ export default function HeaderHomeComponent() {
             <img
               src={logoBrand}
               alt=""
-              className="w-[80px] h-[80px] cursor-pointer"
+              className="w-[80px] h-[80px] cursor-pointer rounded-full"
             />
           </Link>
 

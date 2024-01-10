@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { IconClose } from "../../navbar/icon";
 import { useDispatch } from "react-redux";
 import { joinClass } from "../../../store/redux/features/classSlice";
+import { toast } from "react-toastify";
 
 export default function ModelJoinClass({ handleModelJoinClass }) {
   const dispatch = useDispatch();
@@ -21,10 +22,10 @@ export default function ModelJoinClass({ handleModelJoinClass }) {
       const requestStatus = res.meta.requestStatus;
 
       if (requestStatus === "fulfilled") {
-        handleModelJoinClass();
+        handleModelCreateClass();
         toast.success("Join class success");
       } else {
-        toast.error("Join class failed");
+        toast.error("Join class no exits");
       }
     });
   };
@@ -36,7 +37,7 @@ export default function ModelJoinClass({ handleModelJoinClass }) {
       </div>
       <div
         className="absolute top-2 right-3 cursor-pointer"
-        onClick={handleModelJoinClass}
+        onClick={() => handleModelJoinClass()}
       >
         <IconClose />
       </div>

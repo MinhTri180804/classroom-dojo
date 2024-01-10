@@ -28,20 +28,25 @@ function ClassCard({
     setProfileClass(!profileClass);
   };
 
-  const statusModified = status === "active" ? "inactive" : "active";
+  const statusModified = status == "active" ? "inactive" : "active";
 
-  const handleModifiedStatus = async () => {
+  const handleModifiedStatus = async (statusModified) => {
     const dataRequest = {
       status: statusModified,
     };
 
-    const result = await dispatch(modifiedStatusClass(classId, dataRequest));
-    const statusRequest = await result.meta.requestStatus;
-    if (statusRequest === "fulfilled") {
-      handleProfileClass();
-      toast.success(`Modified status class ${title} success`);
-    } else if (statusRequest === "rejected") {
-      toast.error(`Modified status class ${title} failed`);
+    try {
+      const result = await dispatch(modifiedStatusClass(classId, dataRequest));
+      const statusRequest = await result.meta.requestStatus;
+      if (statusRequest === "fulfilled") {
+        handleProfileClass();
+        toast.success(`Modified status class ${title} success`);
+      } else if (statusRequest === "rejected") {
+        toast.error(`Modified status class ${title} failed`);
+      }
+    } catch (error) {
+      console.error("Error modifying status:", error);
+      toast.error(`An error occurred while modifying status for ${title}`);
     }
   };
 
@@ -140,7 +145,7 @@ function ClassCard({
                     Delete
                   </button>
                   <div
-                    onClick={() => handleModifiedStatus()}
+                    onClick={() => handleModifiedStatus(statusModified)}
                     className="w-[100px] py-2 bg-red-300 rounded text-white hover:bg-red-500 duration-200 ease-linear"
                   >
                     End of class

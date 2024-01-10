@@ -9,7 +9,6 @@ export default function StudentCard({
   sessionClass,
 }) {
   const [modelProfile, setModelProfile] = useState(false);
-  const checkFail = sessionClass - attendance > 3 ? true : false;
   const handleModelProfile = () => {
     setModelProfile(!modelProfile);
   };
@@ -17,9 +16,7 @@ export default function StudentCard({
     <>
       <div
         onClick={handleModelProfile}
-        className={`w-full h-[250px] rounded-xl ${
-          checkFail ? "bg-red-200" : "bg-white"
-        } shadow-xl hover:shadow-sm cursor-pointer flex justify-center items-center gap-2 flex-col`}
+        className={`w-full h-[250px] rounded-xl bg-white shadow-xl hover:shadow-sm cursor-pointer flex justify-center items-center gap-2 flex-col`}
       >
         <img
           src={studentAvatar}

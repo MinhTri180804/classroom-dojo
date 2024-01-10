@@ -130,9 +130,9 @@ export const deleteClass = createAsyncThunk(
 
 export const modifiedStatusClass = createAsyncThunk(
   "classes/modifiedStatusClass",
-  async (id, data) => {
+  async (id, dataRequest) => {
     try {
-      const request = await classesApi.modifiedStatusClass(id, data);
+      const request = await classesApi.modifiedStatusClass(id, dataRequest);
       return id;
     } catch (error) {
       throw error;

@@ -7,6 +7,7 @@ import ClassVerticalCreate from "../../components/class/classVertical/classVerti
 import logoBrand from "../../assets/logo.jpg";
 import { formatRole } from "../../utils/format";
 import { IconCalender, IconImage, IconMessage, IconPerson } from "./icon";
+import ClassVerticalJoin from "../class/classCard/classVerticalJoin";
 
 SlideBarComponent.propTypes = {};
 
@@ -75,7 +76,7 @@ function SlideBarComponent(props) {
           <div className="font-bold text-gray-600 font-xl text-left mb-2">
             My Classes
           </div>
-          <ClassVerticalCreate />
+          {roleFormat == "TEACHER" ? <ClassVerticalCreate /> : <ClassVerticalJoin />}
           <ClassVerticalAll />
           {classes.map((item, index) => {
             return <ClassVertical classes={item} key={index} />;

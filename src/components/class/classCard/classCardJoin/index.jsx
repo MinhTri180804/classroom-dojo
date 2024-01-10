@@ -5,7 +5,7 @@ import OverlayComponent from "../../../../components/overlay";
 
 export default function ClassCardJoin() {
   const [isShowModal, setIsShowModal] = useState(false);
-  const handleModelCreateClass = () => {
+  const handleModelJoinClass = () => {
     setIsShowModal(!isShowModal);
   };
   return (
@@ -24,7 +24,7 @@ export default function ClassCardJoin() {
 
       {isShowModal ? (
         <OverlayComponent>
-          <ModelJoinClass handleModelCreateClass={handleModelCreateClass} />
+          <ModelJoinClass handleModelJoinClass={handleModelJoinClass} />
         </OverlayComponent>
       ) : (
         ""

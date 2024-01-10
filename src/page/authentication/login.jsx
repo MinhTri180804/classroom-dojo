@@ -24,6 +24,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (authStatus === "succeeded") {
+      toast.success("Login success!");
       navigate("/launchpad/classes");
     } else if (authStatus === "failed") {
       toast.error("Login failed, please try again!");

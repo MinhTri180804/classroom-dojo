@@ -37,9 +37,9 @@ const classesApi = {
     });
   },
 
-  modifiedStatusClass: (id, data) => {
+  modifiedStatusClass: (id, dataRequest) => {
     const url = `/teachers/classes/${id}/status`;
-    return axiosClient.post(url, data, {
+    return axiosClient.post(url, dataRequest, {
       headers: {
         "Access-token": localStorage.getItem("accessToken") || null,
       },

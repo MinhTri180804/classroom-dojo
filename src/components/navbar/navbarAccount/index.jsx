@@ -36,7 +36,7 @@ export default function NavBarAccount() {
         <IconDown />
 
         <div
-          className={`absolute translate-y-2  right-0 top-full w-[150px] border-[1px] border-gray-100 shadow-xl rounded-lg overflow-hidden ${
+          className={`absolute translate-y-2 bg-white  right-0 top-full w-[150px] border-[1px] border-gray-100 shadow-xl rounded-lg overflow-hidden ${
             openMenuChildren ? "block" : "hidden"
           }`}
         >

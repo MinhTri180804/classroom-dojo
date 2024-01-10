@@ -25,7 +25,6 @@ export default function RegisterPage() {
       .register(requestData, role)
       .then(() => toast.success("Register successfully"))
       .then(() => navigate("/role/" + role + "/login"))
-      .catch(toast.error("Register failed, please try again!"));
   };
 
   return (
